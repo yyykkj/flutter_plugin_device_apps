@@ -2,35 +2,29 @@ group 'fr.g123k.deviceapps'
 version '1.0-SNAPSHOT'
 
 buildscript {
-        repositories {
-            google()
-            mavenCentral() // jcenter()는 더 이상 사용되지 않습니다.
-        }
-        dependencies {
-            classpath 'com.android.tools.build:gradle:7.4.2' // 또는 더 최신 안정 버전
-        }
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
-    }
-}
-
-rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2' // 또는 더 최신 안정 버전
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 30
-    namespace "com.example.device_apps"
+    namespace "com.example.device_apps" // 실제 네임스페이스로 변경
+    compileSdkVersion 33
     defaultConfig {
-        minSdkVersion 16
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion 21
+        targetSdkVersion 33 // 추가
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" // 변경
+    }
+
+    compileOptions { // 추가
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {
@@ -38,6 +32,4 @@ android {
     }
 
     dependencies {
-        implementation 'androidx.annotation:annotation:1.2.0'
-    }
-}
+        implementation("androidx.annotation:annotation:1.6.0")
