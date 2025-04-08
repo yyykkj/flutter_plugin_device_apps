@@ -2,9 +2,13 @@ group 'fr.g123k.deviceapps'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    repositories {
-        google()
-        jcenter()
+        repositories {
+            google()
+            mavenCentral() // jcenter()는 더 이상 사용되지 않습니다.
+        }
+        dependencies {
+            classpath 'com.android.tools.build:gradle:7.4.2' // 또는 더 최신 안정 버전
+        }
     }
 
     dependencies {
